@@ -87,6 +87,7 @@ namespace StockTrackingApp
             this.Name = "FrmCustomer";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "FrmCustomer";
+            this.Load += new System.EventHandler(this.FrmCustomer_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

@@ -6,9 +6,13 @@ using System.Threading.Tasks;
 
 namespace StockTrackingApp.DAL.DTO
 {
-    public class ProductDTO
+    public class SalesDTO
     {
+        public List<SalesDetailDTO> Sales { get; set; }
+        public List<CustomerDetailDTO> Customers { get; set; }
         public List<ProductDetailDTO> Products { get; set; }
         public List<CategoryDetailDTO> Categories { get; set; }
+
+
     }
 }

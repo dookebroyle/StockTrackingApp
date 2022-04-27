@@ -21,6 +21,7 @@ namespace StockTrackingApp
 
         CategoryDTO dto = new CategoryDTO();
         CategoryBLL bll = new CategoryBLL();
+        CategoryDetailDTO detail = new CategoryDetailDTO();
 
 
         private void btnClose_Click(object sender, EventArgs e)
@@ -43,7 +44,20 @@ namespace StockTrackingApp
 
         private void btnUpdate_Click(object sender, EventArgs e)
         {
-
+            if (detail.ID == 0)
+                MessageBox.Show("Please select a category from the list.");
+            else
+            {
+                FrmCategory frm = new FrmCategory();
+                frm.detail = detail;
+                frm.IsUpdate = true;
+                this.Hide();
+                frm.ShowDialog();
+                this.Visible = true;
+                bll = new CategoryBLL();
+                dto = bll.Select();
+                dataGridView1.DataSource = dto.Categories;
+            }
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
@@ -61,6 +75,13 @@ namespace StockTrackingApp
             List<CategoryDetailDTO> list = dto.Categories;
             list = list.Where(x =>x.CategoryName.Contains(txtCategory.Text.ToUpper())).ToList();
             dataGridView1.DataSource = list;
+        }
+
+        private void dataGridView1_RowEnter(object sender, DataGridViewCellEventArgs e)
+        {
+            detail = new CategoryDetailDTO();
+            detail.ID = Convert.ToInt32(dataGridView1.Rows[e.RowIndex].Cells[0].Value);
+            detail.CategoryName = dataGridView1.Rows[e.RowIndex].Cells[1].Value.ToString();
         }
     }
 }

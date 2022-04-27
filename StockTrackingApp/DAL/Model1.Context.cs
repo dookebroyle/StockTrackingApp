@@ -13,10 +13,10 @@ namespace StockTrackingApp.DAL
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class StockTrackingEntities : DbContext
+    public partial class StockTrackingEntities1 : DbContext
     {
-        public StockTrackingEntities()
-            : base("name=StockTrackingEntities")
+        public StockTrackingEntities1()
+            : base("name=StockTrackingEntities1")
         {
         }
     
@@ -28,6 +28,6 @@ namespace StockTrackingApp.DAL
         public virtual DbSet<CATEGORY> CATEGORies { get; set; }
         public virtual DbSet<CUSTOMER> CUSTOMERs { get; set; }
         public virtual DbSet<PRODUCT> PRODUCTs { get; set; }
-        public virtual DbSet<SALE> SALES { get; set; }
+        public virtual DbSet<SALE> SALEs { get; set; }
     }
 }

@@ -35,25 +35,25 @@
           <Property Name="isDeleted" Type="bit" Nullable="false" />
           <Property Name="DeletedDate" Type="date" />
         </EntityType>
-        <EntityType Name="SALES">
+        <EntityType Name="SALE">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
           <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="ProductID" Type="int" Nullable="false" />
           <Property Name="CustomerID" Type="int" Nullable="false" />
-          <Property Name="CateogoryID" Type="int" Nullable="false" />
+          <Property Name="CategoryID" Type="int" Nullable="false" />
           <Property Name="ProductSalesAmount" Type="int" Nullable="false" />
           <Property Name="ProductSalesPrice" Type="int" Nullable="false" />
-          <Property Name="SalesDate" Type="nchar" MaxLength="10" Nullable="false" />
-          <Property Name="isDeleted" Type="bit" Nullable="false" />
+          <Property Name="SalesDate" Type="date" Nullable="false" />
+          <Property Name="isDeleted" Type="bit" />
           <Property Name="DeletedDate" Type="date" />
         </EntityType>
         <EntityContainer Name="StockTrackingModelStoreContainer">
           <EntitySet Name="CATEGORY" EntityType="Self.CATEGORY" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="CUSTOMER" EntityType="Self.CUSTOMER" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PRODUCT" EntityType="Self.PRODUCT" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="SALES" EntityType="Self.SALES" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SALE" EntityType="Self.SALE" Schema="dbo" store:Type="Tables" />
         </EntityContainer>
       </Schema>
     </edmx:StorageModels>
@@ -97,25 +97,25 @@
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="ProductID" Type="Int32" Nullable="false" />
           <Property Name="CustomerID" Type="Int32" Nullable="false" />
-          <Property Name="CateogoryID" Type="Int32" Nullable="false" />
+          <Property Name="CategoryID" Type="Int32" Nullable="false" />
           <Property Name="ProductSalesAmount" Type="Int32" Nullable="false" />
           <Property Name="ProductSalesPrice" Type="Int32" Nullable="false" />
-          <Property Name="SalesDate" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
-          <Property Name="isDeleted" Type="Boolean" Nullable="false" />
+          <Property Name="SalesDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="isDeleted" Type="Boolean" />
           <Property Name="DeletedDate" Type="DateTime" Precision="0" />
         </EntityType>
-        <EntityContainer Name="StockTrackingEntities" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="StockTrackingEntities1" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="CATEGORies" EntityType="Self.CATEGORY" />
           <EntitySet Name="CUSTOMERs" EntityType="Self.CUSTOMER" />
           <EntitySet Name="PRODUCTs" EntityType="Self.PRODUCT" />
-          <EntitySet Name="SALES" EntityType="Self.SALE" />
+          <EntitySet Name="SALEs" EntityType="Self.SALE" />
         </EntityContainer>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="StockTrackingModelStoreContainer" CdmEntityContainer="StockTrackingEntities">
+        <EntityContainerMapping StorageEntityContainer="StockTrackingModelStoreContainer" CdmEntityContainer="StockTrackingEntities1">
           <EntitySetMapping Name="CATEGORies">
             <EntityTypeMapping TypeName="StockTrackingModel.CATEGORY">
               <MappingFragment StoreEntitySet="CATEGORY">
@@ -149,13 +149,13 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="SALES">
+          <EntitySetMapping Name="SALEs">
             <EntityTypeMapping TypeName="StockTrackingModel.SALE">
-              <MappingFragment StoreEntitySet="SALES">
+              <MappingFragment StoreEntitySet="SALE">
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="ProductID" ColumnName="ProductID" />
                 <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
-                <ScalarProperty Name="CateogoryID" ColumnName="CateogoryID" />
+                <ScalarProperty Name="CategoryID" ColumnName="CategoryID" />
                 <ScalarProperty Name="ProductSalesAmount" ColumnName="ProductSalesAmount" />
                 <ScalarProperty Name="ProductSalesPrice" ColumnName="ProductSalesPrice" />
                 <ScalarProperty Name="SalesDate" ColumnName="SalesDate" />

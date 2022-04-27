@@ -17,11 +17,11 @@ namespace StockTrackingApp.DAL
         public int ID { get; set; }
         public int ProductID { get; set; }
         public int CustomerID { get; set; }
-        public int CateogoryID { get; set; }
+        public int CategoryID { get; set; }
         public int ProductSalesAmount { get; set; }
         public int ProductSalesPrice { get; set; }
-        public string SalesDate { get; set; }
-        public bool isDeleted { get; set; }
+        public System.DateTime SalesDate { get; set; }
+        public Nullable<bool> isDeleted { get; set; }
         public Nullable<System.DateTime> DeletedDate { get; set; }
     }
 }
