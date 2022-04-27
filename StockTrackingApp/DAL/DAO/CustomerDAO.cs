@@ -11,12 +11,28 @@ namespace StockTrackingApp.DAL.DAO
     {
         public bool Delete(CUSTOMER entity)
         {
-            throw new NotImplementedException();
+            try
+            {
+                CUSTOMER customer = db.CUSTOMERs.First(x => x.ID == entity.ID);
+                customer.isDeleted = true;
+                customer.DeletedDate = DateTime.Today;
+                db.SaveChanges();
+                return true;
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
         }
 
         public bool GetBack(int ID)
         {
-            throw new NotImplementedException();
+            CUSTOMER customer = db.CUSTOMERs.First(x => x.ID == ID);
+            customer.isDeleted = false;
+            customer.DeletedDate = null;
+            db.SaveChanges();
+            return true;
         }
 
         public bool Insert(CUSTOMER entity)
@@ -39,14 +55,14 @@ namespace StockTrackingApp.DAL.DAO
             try
             {
                 List<CustomerDetailDTO> Customers = new List<CustomerDetailDTO>();
-                var list = db.CUSTOMERs;
+                var list = db.CUSTOMERs.Where(x=>x.isDeleted == false).ToList();
                 foreach(var item in list)
                 {
                     CustomerDetailDTO dto = new CustomerDetailDTO();
                     dto.ID = item.ID;
                     dto.CustomerName = item.CustomerName;
                     dto.IsDeleted = item.isDeleted;
-                    dto.DeletedDate = item.DeletedDate;
+                    dto.DeletedDate = Convert.ToDateTime(item.DeletedDate);
                     Customers.Add(dto);
                 }
                 return Customers;
@@ -56,6 +72,30 @@ namespace StockTrackingApp.DAL.DAO
 
                 throw;
             }        }
+
+        public List<CustomerDetailDTO> Select(bool IsDeleted)
+        {
+            try
+            {
+                List<CustomerDetailDTO> Customers = new List<CustomerDetailDTO>();
+                var list = db.CUSTOMERs.Where(x => x.isDeleted == true).ToList();
+                foreach (var item in list)
+                {
+                    CustomerDetailDTO dto = new CustomerDetailDTO();
+                    dto.ID = item.ID;
+                    dto.CustomerName = item.CustomerName;
+                    dto.IsDeleted = item.isDeleted;
+                    dto.DeletedDate = Convert.ToDateTime(item.DeletedDate);
+                    Customers.Add(dto);
+                }
+                return Customers;
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
 
         public bool Update(CUSTOMER entity)
         {

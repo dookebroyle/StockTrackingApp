@@ -16,7 +16,7 @@
     <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="CustomerName" Type="varchar" MaxLength="50" Nullable="false" />
     <Property Name="isDeleted" Type="bit" Nullable="false" />
-    <Property Name="DeletedDate" Type="date" Nullable="false" />
+    <Property Name="DeletedDate" Type="date" />
   </EntityType>
   <EntityType Name="PRODUCT">
     <Key>

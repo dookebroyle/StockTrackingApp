@@ -12,14 +12,22 @@ namespace StockTrackingApp.BLL
     public class CategoryBLL : IBLL<CategoryDetailDTO, CategoryDTO>
     {
         CategoryDAO dao = new CategoryDAO();
+        ProductDAO productdao = new ProductDAO();
         public bool Delete(CategoryDetailDTO entity)
         {
-            throw new NotImplementedException();
+            CATEGORY category = new CATEGORY();
+            category.ID = entity.ID;
+            
+            dao.Delete(category);
+            PRODUCT product = new PRODUCT();
+            product.CateogryID = entity.ID;
+            productdao.Delete(product);
+            return true;
         }
 
         public bool GetBack(CategoryDetailDTO entity)
         {
-            throw new NotImplementedException();
+            return dao.GetBack(entity.ID);
         }
 
         public bool Insert(CategoryDetailDTO entity)
@@ -34,6 +42,12 @@ namespace StockTrackingApp.BLL
         {
             CategoryDTO dto = new CategoryDTO();
             dto.Categories = dao.Select();
+            return dto;
+        }
+        public CategoryDTO Select(bool IsDeleted)
+        {
+            CategoryDTO dto = new CategoryDTO();
+            dto.Categories = dao.Select(IsDeleted);
             return dto;
         }
 

@@ -15,14 +15,22 @@ namespace StockTrackingApp.BLL
     {
         CategoryDAO categorydao = new CategoryDAO();
         ProductDAO productdao = new ProductDAO();
+        SalesDAO saledao = new SalesDAO();
         public bool Delete(ProductDetailDTO entity)
         {
-            throw new NotImplementedException();
+            PRODUCT product = new PRODUCT();
+            product.ID = entity.ProductID;
+            productdao.Delete(product);
+            SALE sale = new SALE();
+            sale.ProductID = entity.ProductID;
+            saledao.Delete(sale);
+            return true;
+            
         }
 
         public bool GetBack(ProductDetailDTO entity)
         {
-            throw new NotImplementedException();
+            return productdao.GetBack(entity.ID);
         }
 
         public bool Insert(ProductDetailDTO entity)
@@ -40,7 +48,13 @@ namespace StockTrackingApp.BLL
             dto.Categories = categorydao.Select();
             dto.Products = productdao.Select();
             return dto;
-
+        }
+        public ProductDTO Select(bool isDeleted)
+        {
+            ProductDTO dto = new ProductDTO();
+            dto.Categories = categorydao.Select(isDeleted);
+            dto.Products = productdao.Select(isDeleted);
+            return dto;
         }
 
         public bool Update(ProductDetailDTO entity)

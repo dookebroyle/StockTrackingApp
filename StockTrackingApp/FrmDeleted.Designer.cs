@@ -59,6 +59,7 @@ namespace StockTrackingApp
             this.cmbDeletedData.Name = "cmbDeletedData";
             this.cmbDeletedData.Size = new System.Drawing.Size(193, 28);
             this.cmbDeletedData.TabIndex = 9;
+            this.cmbDeletedData.SelectedIndexChanged += new System.EventHandler(this.cmbDeletedData_SelectedIndexChanged);
             // 
             // label2
             // 
@@ -100,10 +101,11 @@ namespace StockTrackingApp
             this.btnGetBack.TabIndex = 10;
             this.btnGetBack.Text = "Get Back";
             this.btnGetBack.UseVisualStyleBackColor = true;
-            this.btnGetBack.Click += new System.EventHandler(this.btnSave_Click);
+            this.btnGetBack.Click += new System.EventHandler(this.btnGetBack_Click);
             // 
             // dataGridView1
             // 
+            this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridView1.Location = new System.Drawing.Point(0, 58);
@@ -111,6 +113,7 @@ namespace StockTrackingApp
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.Size = new System.Drawing.Size(800, 292);
             this.dataGridView1.TabIndex = 2;
+            this.dataGridView1.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_RowEnter);
             // 
             // FrmDeleted
             // 

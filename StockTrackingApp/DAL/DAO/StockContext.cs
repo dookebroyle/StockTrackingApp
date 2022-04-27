@@ -8,6 +8,6 @@ namespace StockTrackingApp.DAL.DAO
 {
     public class StockContext
     {
-        public StockTrackingEntities1 db = new StockTrackingEntities1();
+        public StockTrackingEntities2 db = new StockTrackingEntities2();
     }
 }

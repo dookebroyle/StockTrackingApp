@@ -13,10 +13,10 @@ namespace StockTrackingApp.DAL
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class StockTrackingEntities1 : DbContext
+    public partial class StockTrackingEntities2 : DbContext
     {
-        public StockTrackingEntities1()
-            : base("name=StockTrackingEntities1")
+        public StockTrackingEntities2()
+            : base("name=StockTrackingEntities2")
         {
         }
     

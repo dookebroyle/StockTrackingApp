@@ -17,6 +17,6 @@ namespace StockTrackingApp.DAL
         public int ID { get; set; }
         public string CustomerName { get; set; }
         public bool isDeleted { get; set; }
-        public System.DateTime DeletedDate { get; set; }
+        public Nullable<System.DateTime> DeletedDate { get; set; }
     }
 }

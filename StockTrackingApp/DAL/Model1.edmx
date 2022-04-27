@@ -21,7 +21,7 @@
           <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="CustomerName" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="isDeleted" Type="bit" Nullable="false" />
-          <Property Name="DeletedDate" Type="date" Nullable="false" />
+          <Property Name="DeletedDate" Type="date" />
         </EntityType>
         <EntityType Name="PRODUCT">
           <Key>
@@ -76,7 +76,7 @@
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="CustomerName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="isDeleted" Type="Boolean" Nullable="false" />
-          <Property Name="DeletedDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="DeletedDate" Type="DateTime" Precision="0" />
         </EntityType>
         <EntityType Name="PRODUCT">
           <Key>
@@ -104,7 +104,7 @@
           <Property Name="isDeleted" Type="Boolean" />
           <Property Name="DeletedDate" Type="DateTime" Precision="0" />
         </EntityType>
-        <EntityContainer Name="StockTrackingEntities1" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="StockTrackingEntities2" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="CATEGORies" EntityType="Self.CATEGORY" />
           <EntitySet Name="CUSTOMERs" EntityType="Self.CUSTOMER" />
           <EntitySet Name="PRODUCTs" EntityType="Self.PRODUCT" />
@@ -115,7 +115,7 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="StockTrackingModelStoreContainer" CdmEntityContainer="StockTrackingEntities1">
+        <EntityContainerMapping StorageEntityContainer="StockTrackingModelStoreContainer" CdmEntityContainer="StockTrackingEntities2">
           <EntitySetMapping Name="CATEGORies">
             <EntityTypeMapping TypeName="StockTrackingModel.CATEGORY">
               <MappingFragment StoreEntitySet="CATEGORY">

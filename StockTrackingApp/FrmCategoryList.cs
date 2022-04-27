@@ -39,7 +39,25 @@ namespace StockTrackingApp
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
+            if (detail.ID == 0)
+                MessageBox.Show("Please select a category from the table.");
+            else
+            {
+                DialogResult result = MessageBox.Show("Are you sure?", "Warning", MessageBoxButtons.YesNo);
 
+                if (result == DialogResult.Yes)
+                {
+                    
+                    if (bll.Delete(detail))
+                    {
+                        MessageBox.Show("Category has been deleted.");
+                        bll = new CategoryBLL();
+                        dto = bll.Select();
+                        dataGridView1.DataSource = dto.Categories;
+                        txtCategory.Clear();
+                    }
+                }
+            }
         }
 
         private void btnUpdate_Click(object sender, EventArgs e)

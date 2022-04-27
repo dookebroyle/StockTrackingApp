@@ -28,7 +28,25 @@ namespace StockTrackingApp
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
-
+            if (detail.ProductID == 0)
+                MessageBox.Show("Please select a product from the table.");
+            else
+            {
+                DialogResult result = MessageBox.Show("Are you sure?", "Warning", MessageBoxButtons.YesNo);
+                
+                if (result == DialogResult.Yes)
+                {
+                    if (bll.Delete(detail))
+                    {
+                        MessageBox.Show("Product has been deleted.");
+                        bll = new ProductBLL();
+                        dto = bll.Select();
+                        dataGridView1.DataSource = dto.Products;
+                        cmbCateogry.DataSource = dto.Categories;
+                        CleanFilters();
+                    }
+                }
+            }
         }
 
         private void btnUpdate_Click(object sender, EventArgs e)
@@ -82,13 +100,13 @@ namespace StockTrackingApp
             cmbCateogry.ValueMember = "ID";
             cmbCateogry.SelectedIndex = -1;
             dataGridView1.DataSource = dto.Products;
-            dataGridView1.Columns[0].Visible = false;
+            dataGridView1.Columns[0].HeaderText = "Unknown";
             dataGridView1.Columns[1].HeaderText = "Product Name";
             dataGridView1.Columns[2].HeaderText = "Category Name";
             dataGridView1.Columns[3].HeaderText = "Stock Amount";
             dataGridView1.Columns[4].HeaderText = "Price";
-            dataGridView1.Columns[5].Visible = false;
-            dataGridView1.Columns[6].Visible = false;
+            dataGridView1.Columns[5].HeaderText = "Product ID";
+            dataGridView1.Columns[6].HeaderText = "Category ID";
 
         }
 
@@ -151,10 +169,11 @@ namespace StockTrackingApp
         {
             detail = new ProductDetailDTO();
             detail.ProductID = Convert.ToInt32(dataGridView1.Rows[e.RowIndex].Cells[5].Value);
+            
             detail.ProductName = dataGridView1.Rows[e.RowIndex].Cells[1].Value.ToString();
             detail.CategoryID = Convert.ToInt32(dataGridView1.Rows[e.RowIndex].Cells[6].Value);
             detail.Price = Convert.ToInt32(dataGridView1.Rows[e.RowIndex].Cells[4].Value);
-            Console.WriteLine(detail.CategoryID);
+
  
         }
     }

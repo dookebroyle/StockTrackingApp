@@ -189,17 +189,7 @@ namespace StockTrackingApp
             detail.SalesAmount = Convert.ToInt32(dataGridView1.Rows[e.RowIndex].Cells[6].Value);
 
 
-            dataGridView1.Columns[0].HeaderText = "Customer Name";
-            dataGridView1.Columns[1].HeaderText = "Product Name";
-            dataGridView1.Columns[2].HeaderText = "Category Name";
-            dataGridView1.Columns[3].HeaderText = "Customer ID";
-            dataGridView1.Columns[4].HeaderText = "Product ID";
-            dataGridView1.Columns[5].HeaderText = "Category ID";
-            dataGridView1.Columns[6].HeaderText = "Sales Amount";
-            dataGridView1.Columns[7].HeaderText = "Price";
-            dataGridView1.Columns[8].HeaderText = "Sales Date";
-            dataGridView1.Columns[9].HeaderText = "Stock Amount";
-            dataGridView1.Columns[10].HeaderText = "Sale ID";
+            
         }
     }
 }
